@@ -1,5 +1,6 @@
 #pragma once
 #include <stack>
+#include <memory>
 
 #include "State.hpp"
 
@@ -8,25 +9,25 @@ public:
 	StateManager();
 	~StateManager();
 
-	void pushState(State* state);
+	void pushState(std::unique_ptr<State> state);
 	void popState();
-	void changeState(State* state);
+	void changeState(std::unique_ptr<State> state);
 
 	void processEvents();
 	void update(sf::Time dt);
 	void draw();
 
-	void stateToChangeTo(State* state);
-	State* getCurrentState() { return m_states.top(); }
+	void stateToChangeTo(std::unique_ptr<State> state);
+	std::unique_ptr<State> getCurrentState()				{ return std::move(m_states.top()); }
 
-	bool running()	{ return m_running; }
-	void quit()		{ m_running = false; }
+	bool running()											{ return m_running; }
+	void quit()												{ m_running = false; }
 
-	bool isChangingState()	{ return m_changingState; }
-	State* getNewState()	{ return m_newState; }
+	bool isChangingState()									{ return m_changingState; }
+	std::unique_ptr<State> getNewState()					{ return std::move(m_newState); }
 private:
-	std::stack<State*> m_states;
-	State* m_newState;
+	std::stack<std::unique_ptr<State>> m_states;
+	std::unique_ptr<State> m_newState;
 	bool m_running;
 	bool m_changingState;
 };

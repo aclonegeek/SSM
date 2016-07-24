@@ -14,26 +14,24 @@ StateManager::~StateManager() {
 		popState();
 }
 
-void StateManager::pushState(State* state) {
-	m_states.push(state);
+void StateManager::pushState(std::unique_ptr<State> state) {
+	m_states.push(std::move(state));
 }
 
 void StateManager::popState() {
-	std::cout << "deleted: " << m_states.top();
-	delete m_states.top();
 	m_states.pop();
 }
 
-void StateManager::changeState(State* state) {
+void StateManager::changeState(std::unique_ptr<State> state) {
 	if (!m_states.empty())
 		popState();
-	pushState(state);
+	pushState(std::move(state));
 
 	m_changingState = false;
 }
 
-void StateManager::stateToChangeTo(State* state) {
-	m_newState = state;
+void StateManager::stateToChangeTo(std::unique_ptr<State> state) {
+	m_newState = std::move(state);
 	m_changingState = true;
 }
 

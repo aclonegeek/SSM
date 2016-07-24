@@ -4,7 +4,9 @@ const sf::Time Game::TimePerFrame = sf::seconds(1.0f / 60.0f);
 
 void Game::run() {
 	m_window.create(sf::VideoMode{ 1280, 720 }, "Dodaren", sf::Style::Titlebar | sf::Style::Close);
-	m_stateManager.pushState(new MenuState(m_stateManager, m_window));
+
+	std::unique_ptr<State> menuState(new MenuState(m_stateManager, m_window));
+	m_stateManager.pushState(std::move(menuState));
 
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;

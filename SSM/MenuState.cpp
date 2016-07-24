@@ -33,8 +33,11 @@ void MenuState::processEvents() {
 			case sf::Event::KeyPressed:
 				switch (event.key.code) {
 					case sf::Keyboard::Space:
-						m_stateManager.stateToChangeTo(new GameState(m_stateManager, m_window));
+					{
+						std::unique_ptr<State> gameState(new GameState(m_stateManager, m_window));
+						m_stateManager.stateToChangeTo(std::move(gameState));
 						break;
+					}
 					case sf::Keyboard::Escape:
 						m_stateManager.quit();
 						break;
