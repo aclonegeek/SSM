@@ -4,14 +4,9 @@
 #include "MenuState.hpp"
 #include "GameState.hpp"
 
-
 MenuState::MenuState(StateManager& stateManager, sf::RenderWindow& window)
 	: State{ stateManager, window } {
-	std::cout << this << " [MenuState] Initialized" << std::endl;
-}
-
-MenuState::~MenuState() {
-	std::cout << "[MenuState] Destroyed" << std::endl;
+	std::cout << "[MenuState] Initialized" << std::endl;
 }
 
 void MenuState::pause() {

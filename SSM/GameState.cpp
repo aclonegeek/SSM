@@ -5,11 +5,7 @@
 
 GameState::GameState(StateManager& stateManager, sf::RenderWindow& window)
 	: State{ stateManager, window } {
-	std::cout << this << "[GameState] Initialized" << std::endl;
-}
-
-GameState::~GameState() {
-	std::cout << "[GameState] Destroyed" << std::endl;
+	std::cout << "[GameState] Initialized" << std::endl;
 }
 
 void GameState::pause() {
