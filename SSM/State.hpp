@@ -5,7 +5,9 @@ class StateManager;
 
 class State {
 public:
-	State(StateManager& stateManager, sf::RenderWindow& window);
+	State(StateManager& stateManager, sf::RenderWindow& window) 
+		: m_stateManager{ stateManager }
+		, m_window{ window } {}
 
 	virtual void pause() = 0;
 	virtual void resume() = 0;
