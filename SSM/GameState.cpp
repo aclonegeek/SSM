@@ -1,4 +1,4 @@
-#include <SFML/Graphics.hpp>
+#include <SFML/Window/Event.hpp>
 #include <iostream>
 
 #include "GameState.hpp"
@@ -34,7 +34,7 @@ void GameState::processEvents() {
 	}
 }
 
-void GameState::update(sf::Time dt) {
+void GameState::update(const sf::Time& dt) {
 
 }
 

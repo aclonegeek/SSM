@@ -1,6 +1,4 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-
 #include "MenuState.hpp"
 
 class Game {
