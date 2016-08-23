@@ -41,7 +41,7 @@ void MenuState::processEvents() {
 	}
 }
 
-void MenuState::update(sf::Time dt) {
+void MenuState::update(const sf::Time& dt) {
 
 }
 

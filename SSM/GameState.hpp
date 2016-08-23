@@ -10,6 +10,6 @@ public:
 	void resume();
 
 	void processEvents();
-	void update(sf::Time dt);
+	void update(const sf::Time& dt);
 	void draw();
 };
