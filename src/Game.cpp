@@ -6,7 +6,7 @@ void Game::run() {
     m_window.create(sf::VideoMode{ 1280, 720 }, "SSM", sf::Style::Titlebar | sf::Style::Close);
 
     std::unique_ptr<State> menuState(new MenuState(m_stateManager, m_window));
-    m_stateManager.pushState(std::move(menuState));
+    m_stateManager.stateToChangeTo(std::move(menuState));
 
     sf::Clock clock;
     sf::Time timeSinceLastUpdate = sf::Time::Zero;
