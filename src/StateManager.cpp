@@ -3,15 +3,16 @@
 #include "StateManager.hpp"
 
 StateManager::StateManager() 
-    : m_running{ true } {
-    std::cout << "[StateManager] Initialized" << std::endl;
+: m_running{ true } {
+    std::cout << "[StateManager] Initialized\n";
 }
 
 StateManager::~StateManager() {
-    std::cout << "[StateManager] Destroyed" << std::endl;
+    std::cout << "[StateManager] Destroyed\n";
 
-    while (!m_states.empty())
+    while (!m_states.empty()) {
         popState();
+    }
 }
 
 void StateManager::pushState(std::unique_ptr<State> state) {
@@ -23,8 +24,9 @@ void StateManager::popState() {
 }
 
 void StateManager::changeState(std::unique_ptr<State> state) {
-    if (!m_states.empty())
+    if (!m_states.empty()) {
         popState();
+    }
     pushState(std::move(state));
 
     m_changingState = false;

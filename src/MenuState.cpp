@@ -5,8 +5,12 @@
 #include "GameState.hpp"
 
 MenuState::MenuState(StateManager& stateManager, sf::RenderWindow& window)
-    : State{ stateManager, window } {
-    std::cout << "[MenuState] Initialized" << std::endl;
+: State{ stateManager, window } {
+    std::cout << "[MenuState] Initialized\n";
+}
+
+MenuState::~MenuState() {
+    std::cout << "[MenuState] Destroyed\n";
 }
 
 void MenuState::pause() {
@@ -27,8 +31,7 @@ void MenuState::processEvents() {
                 break;
             case sf::Event::KeyPressed:
                 switch (event.key.code) {
-                    case sf::Keyboard::Space:
-                    {
+                    case sf::Keyboard::Space: {
                         std::unique_ptr<State> gameState(new GameState(m_stateManager, m_window));
                         m_stateManager.stateToChangeTo(std::move(gameState));
                         break;

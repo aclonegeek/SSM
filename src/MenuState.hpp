@@ -4,6 +4,7 @@
 class MenuState : public State {
 public:
     MenuState(StateManager& stateManager, sf::RenderWindow& window);
+    ~MenuState();
 
     void pause();
     void resume();

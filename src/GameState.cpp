@@ -4,8 +4,12 @@
 #include "GameState.hpp"
 
 GameState::GameState(StateManager& stateManager, sf::RenderWindow& window)
-    : State{ stateManager, window } {
-    std::cout << "[GameState] Initialized" << std::endl;
+: State{ stateManager, window } {
+    std::cout << "[GameState] Initialized\n";
+}
+
+GameState::~GameState() {
+    std::cout << "[GameState] Destroyed\n";
 }
 
 void GameState::pause() {
@@ -21,15 +25,15 @@ void GameState::processEvents() {
 
     while (m_window.pollEvent(event)) {
         switch (event.type) {
-        case sf::Event::Closed:
-            m_stateManager.quit();
-            break;
-        case sf::Event::KeyPressed:
-            switch (event.key.code) {
-                case sf::Keyboard::Escape:
-                    m_stateManager.quit();
-                    break;
-            }
+            case sf::Event::Closed:
+                m_stateManager.quit();
+                break;
+            case sf::Event::KeyPressed:
+                switch (event.key.code) {
+                    case sf::Keyboard::Escape:
+                        m_stateManager.quit();
+                        break;
+                }
         }
     }
 }

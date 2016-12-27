@@ -4,6 +4,7 @@
 class GameState : public State {
 public:
     GameState(StateManager& stateManager, sf::RenderWindow& window);
+    ~GameState();
 
     void pause();
     void resume();
