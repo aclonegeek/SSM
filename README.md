@@ -1,5 +1,5 @@
 # SSM - A Simple State Manager for SFML
-A simple state manager for SFML that utilizes C++11 features, with a focus on clean code.
+A simple state manager for SFML that utilizes C++11 features.
 
 # TODO
 [Here](https://github.com/aclonegeek/SSM/issues)
