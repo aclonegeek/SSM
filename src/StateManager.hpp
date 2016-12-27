@@ -17,17 +17,11 @@ public:
     void update(sf::Time dt);
     void draw();
 
-    void stateToChangeTo(std::unique_ptr<State> state);
-    std::unique_ptr<State> getCurrentState()                { return std::move(m_states.top()); }
+    std::unique_ptr<State> getCurrentState() { return std::move(m_states.top()); }
 
-    bool running()                                          { return m_running; }
-    void quit()                                             { m_running = false; }
-
-    bool isChangingState()                                  { return m_changingState; }
-    std::unique_ptr<State> getNewState()                    { return std::move(m_newState); }
+    bool running()                           { return m_running; }
+    void quit()                              { m_running = false; }
 private:
     std::stack<std::unique_ptr<State>> m_states;
-    std::unique_ptr<State> m_newState;
     bool m_running;
-    bool m_changingState;
 };

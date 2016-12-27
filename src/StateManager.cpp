@@ -28,13 +28,6 @@ void StateManager::changeState(std::unique_ptr<State> state) {
         popState();
     }
     pushState(std::move(state));
-
-    m_changingState = false;
-}
-
-void StateManager::stateToChangeTo(std::unique_ptr<State> state) {
-    m_newState = std::move(state);
-    m_changingState = true;
 }
 
 void StateManager::processEvents() {
