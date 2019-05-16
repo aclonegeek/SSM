@@ -38,7 +38,7 @@ void MenuState::processEvents() {
                     }
                     case sf::Keyboard::Escape:
                         m_stateManager.quit();
-                        break;
+                        return;
                 }
         }
     }

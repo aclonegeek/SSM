@@ -27,12 +27,12 @@ void GameState::processEvents() {
         switch (event.type) {
             case sf::Event::Closed:
                 m_stateManager.quit();
-                break;
+                return;
             case sf::Event::KeyPressed:
                 switch (event.key.code) {
                     case sf::Keyboard::Escape:
                         m_stateManager.quit();
-                        break;
+                        return;
                 }
         }
     }
